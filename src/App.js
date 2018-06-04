@@ -10,7 +10,7 @@ injectGlobal(`
     box-sizing: border-box;
   }
   body {
-    background-color: #25A18E;
+    background-color: #004E64;
     color: #9FFFCB;
     height: 100vh;
     overflow: scroll;
