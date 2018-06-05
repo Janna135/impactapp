@@ -16,7 +16,7 @@ const StyledButton = styled('div')`
   justify-content: center;
   align-items: center;
   margin: 5px;
-  height: 50px;
+  height: 45px;
   width: 300px;
 `
 

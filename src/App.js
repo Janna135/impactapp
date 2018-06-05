@@ -4,6 +4,7 @@ import styled from 'react-emotion'
 import habits from './data/habits'
 
 import ToggleButton from './components/ToggleButton'
+import CountButton from './components/CountButton'
 
 injectGlobal(`
   * {
@@ -44,6 +45,39 @@ class App extends Component {
 
     this.setState({ habits: newHabits })
   }
+
+  increaseCount(id) {
+    const allHabits = this.state.habits
+    const habitIndex = allHabits.findIndex(habit => habit.id === id)
+    const oldHabit = allHabits[habitIndex]
+
+    const newHabits = [
+      ...allHabits.slice(0, habitIndex),
+      { ...oldHabit, count: oldHabit.count + 1 },
+      ...allHabits.slice(habitIndex + 1)
+    ]
+
+    this.setState({ habits: newHabits })
+  }
+
+  decreaseCount(id) {
+    const allHabits = this.state.habits
+    const habitIndex = allHabits.findIndex(habit => habit.id === id)
+    const oldHabit = allHabits[habitIndex]
+
+    if (oldHabit.count === 0) {
+      return
+    }
+
+    const newHabits = [
+      ...allHabits.slice(0, habitIndex),
+      { ...oldHabit, count: oldHabit.count - 1 },
+      ...allHabits.slice(habitIndex + 1)
+    ]
+
+    this.setState({ habits: newHabits })
+  }
+
   constructor(props) {
     super(props)
 
@@ -57,14 +91,28 @@ class App extends Component {
       <Grid>
         <List>
           <h3>Habit-Tracker</h3>
-          {this.state.habits.map(habit => (
-            <ToggleButton
-              text={habit.text}
-              checked={habit.checked}
-              key={habit.id}
-              onClick={e => this.toggleHabit(habit.id)}
-            />
-          ))}
+          {this.state.habits.map(habit => {
+            if (habit.checked != null) {
+              return (
+                <ToggleButton
+                  text={habit.text}
+                  checked={habit.checked}
+                  key={habit.id}
+                  onClick={e => this.toggleHabit(habit.id)}
+                />
+              )
+            } else if (habit.count != null) {
+              return (
+                <CountButton
+                  text={habit.text}
+                  count={habit.count}
+                  key={habit.id}
+                  onIncrease={e => this.increaseCount(habit.id)}
+                  onDecrease={e => this.decreaseCount(habit.id)}
+                />
+              )
+            }
+          })}
         </List>
       </Grid>
     )
