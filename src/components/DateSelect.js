@@ -30,11 +30,11 @@ const SideButton = styled('div')`
 
 export default class DateSelect extends Component {
   render() {
-    const { text, onLeft, onRight, isToday } = this.props
+    const { text, onLeft, onRight } = this.props
     return (
       <StyledButton>
         <SideButton onClick={onLeft}> ‹ </SideButton>
-        <span isToday={isToday}>{text}</span>
+        {text}
         <SideButton onClick={onRight}> › </SideButton>
       </StyledButton>
     )

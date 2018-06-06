@@ -24,6 +24,15 @@ const List = styled('div')`
 `
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      habits: habits,
+      dayOffset: 0
+    }
+  }
+
   updateHabitState(id, changeFunction) {
     const allHabits = this.state.habits
     const habitIndex = allHabits.findIndex(habit => habit.id === id)
@@ -64,24 +73,14 @@ class App extends Component {
     this.setState({ dayOffset: this.state.dayOffset + 1 })
   }
 
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      habits: habits,
-      dayOffset: 0
-    }
-  }
-
   render() {
     return (
       <Grid>
         <List>
           <DateSelect
             text={this.currentDate}
-            onLeft={e => this.moveDayLeft}
-            onRight={e => this.moveDayRight}
-            isToday={this.state.dayOffset === 0}
+            onLeft={e => this.moveDayLeft()}
+            onRight={e => this.moveDayRight()}
           />
           {this.state.habits.map(habit => {
             if (habit.checked != null) {
