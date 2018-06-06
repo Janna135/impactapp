@@ -2,21 +2,12 @@ import React, { Component } from 'react'
 import { injectGlobal } from 'emotion'
 import styled from 'react-emotion'
 import habits from './data/habits'
+import globalStyles from './styles/global'
 
 import ToggleButton from './components/ToggleButton'
 import CountButton from './components/CountButton'
 
-injectGlobal(`
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    background-color: #004E64;
-    color: #9FFFCB;
-    height: 100vh;
-    overflow: scroll;
-  }
-`)
+globalStyles()
 
 const Grid = styled('div')`
   display: grid;
@@ -32,50 +23,30 @@ const List = styled('div')`
 `
 
 class App extends Component {
-  toggleHabit(id) {
+  updateHabitState(id, changeFunction) {
     const allHabits = this.state.habits
     const habitIndex = allHabits.findIndex(habit => habit.id === id)
     const oldHabit = allHabits[habitIndex]
 
     const newHabits = [
       ...allHabits.slice(0, habitIndex),
-      { ...oldHabit, checked: !oldHabit.checked },
+      { ...oldHabit, ...changeFunction(oldHabit) },
       ...allHabits.slice(habitIndex + 1)
     ]
 
     this.setState({ habits: newHabits })
+  }
+
+  toggleHabit(id) {
+    this.updateHabitState(id, oldHabit => ({ checked: !oldHabit.checked }))
   }
 
   increaseCount(id) {
-    const allHabits = this.state.habits
-    const habitIndex = allHabits.findIndex(habit => habit.id === id)
-    const oldHabit = allHabits[habitIndex]
-
-    const newHabits = [
-      ...allHabits.slice(0, habitIndex),
-      { ...oldHabit, count: oldHabit.count + 1 },
-      ...allHabits.slice(habitIndex + 1)
-    ]
-
-    this.setState({ habits: newHabits })
+    this.updateHabitState(id, oldHabit => ({ count: oldHabit.count + 1 }))
   }
 
   decreaseCount(id) {
-    const allHabits = this.state.habits
-    const habitIndex = allHabits.findIndex(habit => habit.id === id)
-    const oldHabit = allHabits[habitIndex]
-
-    if (oldHabit.count === 0) {
-      return
-    }
-
-    const newHabits = [
-      ...allHabits.slice(0, habitIndex),
-      { ...oldHabit, count: oldHabit.count - 1 },
-      ...allHabits.slice(habitIndex + 1)
-    ]
-
-    this.setState({ habits: newHabits })
+    this.updateHabitState(id, oldHabit => ({ count: oldHabit.count - 1 }))
   }
 
   constructor(props) {
