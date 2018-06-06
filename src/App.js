@@ -2,20 +2,12 @@ import React, { Component } from 'react'
 import { injectGlobal } from 'emotion'
 import styled from 'react-emotion'
 import habits from './data/habits'
+import globalStyles from './styles/global'
 
 import ToggleButton from './components/ToggleButton'
+import CountButton from './components/CountButton'
 
-injectGlobal(`
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    background-color: #25A18E;
-    color: #9FFFCB;
-    height: 100vh;
-    overflow: scroll;
-  }
-`)
+globalStyles()
 
 const Grid = styled('div')`
   display: grid;
@@ -31,19 +23,32 @@ const List = styled('div')`
 `
 
 class App extends Component {
-  toggleHabit(id) {
+  updateHabitState(id, changeFunction) {
     const allHabits = this.state.habits
     const habitIndex = allHabits.findIndex(habit => habit.id === id)
     const oldHabit = allHabits[habitIndex]
 
     const newHabits = [
       ...allHabits.slice(0, habitIndex),
-      { ...oldHabit, checked: !oldHabit.checked },
+      { ...oldHabit, ...changeFunction(oldHabit) },
       ...allHabits.slice(habitIndex + 1)
     ]
 
     this.setState({ habits: newHabits })
   }
+
+  toggleHabit(id) {
+    this.updateHabitState(id, oldHabit => ({ checked: !oldHabit.checked }))
+  }
+
+  increaseCount(id) {
+    this.updateHabitState(id, oldHabit => ({ count: oldHabit.count + 1 }))
+  }
+
+  decreaseCount(id) {
+    this.updateHabitState(id, oldHabit => ({ count: oldHabit.count - 1 }))
+  }
+
   constructor(props) {
     super(props)
 
@@ -57,14 +62,28 @@ class App extends Component {
       <Grid>
         <List>
           <h3>Habit-Tracker</h3>
-          {this.state.habits.map(habit => (
-            <ToggleButton
-              text={habit.text}
-              checked={habit.checked}
-              key={habit.id}
-              onClick={e => this.toggleHabit(habit.id)}
-            />
-          ))}
+          {this.state.habits.map(habit => {
+            if (habit.checked != null) {
+              return (
+                <ToggleButton
+                  text={habit.text}
+                  checked={habit.checked}
+                  key={habit.id}
+                  onClick={e => this.toggleHabit(habit.id)}
+                />
+              )
+            } else if (habit.count != null) {
+              return (
+                <CountButton
+                  text={habit.text}
+                  count={habit.count}
+                  key={habit.id}
+                  onIncrease={e => this.increaseCount(habit.id)}
+                  onDecrease={e => this.decreaseCount(habit.id)}
+                />
+              )
+            }
+          })}
         </List>
       </Grid>
     )
