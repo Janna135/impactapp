@@ -70,7 +70,11 @@ class App extends Component {
   }
 
   moveDayRight() {
-    this.setState({ dayOffset: this.state.dayOffset + 1 })
+    if (this.state.dayOffset === 0) {
+      return
+    } else {
+      this.setState({ dayOffset: this.state.dayOffset + 1 })
+    }
   }
 
   render() {
