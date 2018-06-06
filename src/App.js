@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { injectGlobal } from 'emotion'
 import styled from 'react-emotion'
 import habits from './data/habits'
 import globalStyles from './styles/global'
+import moment from 'moment'
 
 import ToggleButton from './components/ToggleButton'
 import CountButton from './components/CountButton'
+import DateSelect from './components/DateSelect'
 
 globalStyles()
 
@@ -49,11 +50,26 @@ class App extends Component {
     this.updateHabitState(id, oldHabit => ({ count: oldHabit.count - 1 }))
   }
 
+  get currentDate() {
+    return moment()
+      .add(this.state.dayOffset, 'days')
+      .format('DD.MM.YYYY')
+  }
+
+  moveDayLeft() {
+    this.setState(state => ({ dayOffset: this.state.dayOffset - 1 }))
+  }
+
+  moveDayRight() {
+    this.setState({ dayOffset: this.state.dayOffset + 1 })
+  }
+
   constructor(props) {
     super(props)
 
     this.state = {
-      habits: habits
+      habits: habits,
+      dayOffset: 0
     }
   }
 
@@ -61,7 +77,12 @@ class App extends Component {
     return (
       <Grid>
         <List>
-          <h3>Habit-Tracker</h3>
+          <DateSelect
+            text={this.currentDate}
+            onLeft={e => this.moveDayLeft}
+            onRight={e => this.moveDayRight}
+            isToday={this.state.dayOffset === 0}
+          />
           {this.state.habits.map(habit => {
             if (habit.checked != null) {
               return (
