@@ -9,9 +9,7 @@ export default class CountButton extends Component {
     return (
       <StyledButton active={count > 0}>
         <SideButton onClick={onDecrease}>-</SideButton>
-        <span>
-          {count > 0 && `${count}`} {text}
-        </span>
+        {count > 0 && `${count}`} {text}
         <SideButton onClick={onIncrease}>+</SideButton>
       </StyledButton>
     )
