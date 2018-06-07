@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import styled from 'react-emotion'
+import StyledNavLink from './StyledNavLink'
 
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
-const StyledElement = styled('div')`
+const Wrapper = styled('div')`
   display: flex;
   justify-content: center;
 `
@@ -28,19 +29,28 @@ const StyledButton = styled('div')`
 
 export default class SwitchButton extends Component {
   render() {
-    const { onClick, link1, link2 } = this.props
+    const { onClick, selectedIndex } = this.props
     const selected = this.props.selected || 0
     return (
-      <Router>
-        <StyledElement>
-          <StyledButton disabled={selected === 0} onClick={onClick}>
-            {link1}
-          </StyledButton>
-          <StyledButton disabled={selected === 1} onClick={onClick}>
-            {link2}
-          </StyledButton>
-        </StyledElement>
-      </Router>
+      <Wrapper>
+        <StyledNavLink
+          to="/"
+          exact
+          activeStyle={{
+            background: '#004E64'
+          }}
+        >
+          Today
+        </StyledNavLink>
+        <StyledNavLink
+          to="/history"
+          activeStyle={{
+            background: '#004E64'
+          }}
+        >
+          History
+        </StyledNavLink>
+      </Wrapper>
     )
   }
 }
