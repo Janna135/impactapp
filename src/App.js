@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { injectGlobal } from 'emotion'
 import styled from 'react-emotion'
 import habits from './data/habits'
 import globalStyles from './styles/global'
+import moment from 'moment'
 
 import ToggleButton from './components/ToggleButton'
 import CountButton from './components/CountButton'
+import DateSelect from './components/DateSelect'
 
 globalStyles()
 
@@ -23,6 +24,15 @@ const List = styled('div')`
 `
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      habits: habits,
+      dayOffset: 0
+    }
+  }
+
   updateHabitState(id, changeFunction) {
     const allHabits = this.state.habits
     const habitIndex = allHabits.findIndex(habit => habit.id === id)
@@ -49,11 +59,21 @@ class App extends Component {
     this.updateHabitState(id, oldHabit => ({ count: oldHabit.count - 1 }))
   }
 
-  constructor(props) {
-    super(props)
+  get currentDate() {
+    return moment()
+      .add(this.state.dayOffset, 'days')
+      .format('DD.MM.YYYY')
+  }
 
-    this.state = {
-      habits: habits
+  moveDayLeft() {
+    this.setState(state => ({ dayOffset: this.state.dayOffset - 1 }))
+  }
+
+  moveDayRight() {
+    if (this.state.dayOffset === 0) {
+      return
+    } else {
+      this.setState({ dayOffset: this.state.dayOffset + 1 })
     }
   }
 
@@ -61,7 +81,11 @@ class App extends Component {
     return (
       <Grid>
         <List>
-          <h3>Habit-Tracker</h3>
+          <DateSelect
+            text={this.currentDate}
+            onLeft={e => this.moveDayLeft()}
+            onRight={e => this.moveDayRight()}
+          />
           {this.state.habits.map(habit => {
             if (habit.checked != null) {
               return (

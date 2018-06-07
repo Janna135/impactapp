@@ -4,6 +4,7 @@ import { action } from '@storybook/addon-actions'
 
 import ToggleButton from '../src/components/ToggleButton'
 import CountButton from '../src/components/CountButton'
+import DateSelect from '../src/components/DateSelect'
 
 storiesOf('ToggleButton', module)
   .add('default', () => (
@@ -15,4 +16,8 @@ storiesOf('ToggleButton', module)
 
 storiesOf('CountButton', module).add('default', () => (
   <CountButton text={'km Rad gefahren'} count={'3'} onCLick={'click'} />
+))
+
+storiesOf('DateSelect', module).add('default', () => (
+  <DateSelect date="22.02.2018" onClick={'click'} />
 ))
