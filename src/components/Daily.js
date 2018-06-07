@@ -10,12 +10,20 @@ import CountButton from './CountButton'
 import DateSelect from './DateSelect'
 
 import Grid from '../styles/Grid'
+import { css } from 'react-emotion'
 
 const List = styled('div')`
   grid-row: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center;
+  overflow: scroll;
+`
+
+const headerstyle = css`
+  display: flex;
+  justify-content: center;
   align-items: center;
 `
 
@@ -81,13 +89,15 @@ export default class Daily extends Component {
   }
   render() {
     return (
-      <Grid>
-        <List>
+      <div>
+        <div className={headerstyle}>
           <DateSelect
             text={this.currentDate}
             onLeft={e => this.moveDayLeft()}
             onRight={e => this.moveDayRight()}
           />
+        </div>
+        <List>
           {this.state.habits.map(habit => {
             if (habit.checked != null) {
               return (
@@ -111,7 +121,7 @@ export default class Daily extends Component {
             }
           })}
         </List>
-      </Grid>
+      </div>
     )
   }
 }

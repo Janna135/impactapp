@@ -6,14 +6,7 @@ import ToggleButton from '../src/components/ToggleButton'
 import CountButton from '../src/components/CountButton'
 import DateSelect from '../src/components/DateSelect'
 import SwitchButton from '../src/components/SwitchButton'
-
-storiesOf('ToggleButton', module)
-  .add('default', () => (
-    <ToggleButton text={'Essen mitnehmen'} checked={false} onClick={'click'} />
-  ))
-  .add('checked', () => (
-    <ToggleButton text={'Essen mitnehmen'} checked={true} onClick={'click'} />
-  ))
+import Navigation from '../src/components/Navigation'
 
 storiesOf('CountButton', module).add('default', () => (
   <CountButton text={'km Rad gefahren'} count={'3'} onCLick={'click'} />
@@ -22,6 +15,14 @@ storiesOf('CountButton', module).add('default', () => (
 storiesOf('DateSelect', module).add('default', () => (
   <DateSelect date="22.02.2018" onClick={'click'} />
 ))
+
+storiesOf('Navigation', module)
+  .add('select left', () => (
+    <Navigation selected={0} onClick={action('click')} />
+  ))
+  .add('select right', () => (
+    <Navigation selected={1} onClick={action('click')} />
+  ))
 
 storiesOf('SwitchButton, module')
   .add('left selected', () => (
@@ -39,4 +40,11 @@ storiesOf('SwitchButton, module')
       textLeft={'All'}
       textRight={'Days'}
     />
+  ))
+storiesOf('ToggleButton', module)
+  .add('default', () => (
+    <ToggleButton text={'Essen mitnehmen'} checked={false} onClick={'click'} />
+  ))
+  .add('checked', () => (
+    <ToggleButton text={'Essen mitnehmen'} checked={true} onClick={'click'} />
   ))
