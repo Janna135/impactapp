@@ -13,17 +13,15 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <Grid>
-            <Route exact path="/" component={TodayPage}>
-              Today
-            </Route>
-            <Route path="/history" component={HistoryPage}>
-              History
-            </Route>
-            <Navigation />
-          </Grid>
-        </div>
+        <Grid>
+          <Route exact path="/" component={TodayPage}>
+            Today
+          </Route>
+          <Route path="/history" component={HistoryPage}>
+            History
+          </Route>
+          <Navigation />
+        </Grid>
       </Router>
     )
   }

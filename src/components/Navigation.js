@@ -5,49 +5,18 @@ import StyledNavLink from './StyledNavLink'
 const Wrapper = styled('div')`
   display: flex;
   justify-content: center;
-`
-
-const StyledButton = styled('div')`
-  background-color: ${props => (props.disabled ? '#004E64' : '#7AE582')};
-  border: 1px solid #9fffcb;
-  font-size: 1.3rem;
-  height: 50px;
-  width: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  grid-row: 3;
+  width: 100%;
   position: sticky;
-
-  :first-child{
-    border-radius 5px 0 0 5px;
-  }
-  :last-child{
-    border-radius: 0 5px 5px 0;
-  }
 `
 
 export default class SwitchButton extends Component {
   render() {
-    const { onClick, selectedIndex } = this.props
-    const selected = this.props.selected || 0
     return (
       <Wrapper>
-        <StyledNavLink
-          to="/"
-          exact
-          activeStyle={{
-            background: '#004E64'
-          }}
-        >
+        <StyledNavLink to="/" exact activeStyle={{ background: '#7AE582' }}>
           Today
         </StyledNavLink>
-        <StyledNavLink
-          to="/history"
-          activeStyle={{
-            background: '#004E64'
-          }}
-        >
+        <StyledNavLink to="/history" activeStyle={{ background: '#7AE582' }}>
           History
         </StyledNavLink>
       </Wrapper>
