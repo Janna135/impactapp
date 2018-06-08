@@ -9,25 +9,27 @@ import ToggleButton from './ToggleButton'
 import CountButton from './CountButton'
 import DateSelect from './DateSelect'
 
-import Grid from '../styles/Grid'
 import { css } from 'react-emotion'
 
 const List = styled('div')`
-  grid-row: 1;
+  grid-row: 2;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  overflow: scroll;
+  overflow-x: scroll;
 `
 
 const headerstyle = css`
   display: flex;
   justify-content: center;
   align-items: center;
+  grid-row: 1;
+  position: sticky;
 `
 
-export default class Daily extends Component {
+export default class TodayPage extends Component {
   constructor(props) {
     super(props)
 
@@ -89,14 +91,14 @@ export default class Daily extends Component {
   }
   render() {
     return (
-      <div>
-        <div className={headerstyle}>
-          <DateSelect
-            text={this.currentDate}
-            onLeft={e => this.moveDayLeft()}
-            onRight={e => this.moveDayRight()}
-          />
-        </div>
+      <React.Fragment>
+        <DateSelect
+          className={headerstyle}
+          text={this.currentDate}
+          onLeft={e => this.moveDayLeft()}
+          onRight={e => this.moveDayRight()}
+        />
+
         <List>
           {this.state.habits.map(habit => {
             if (habit.checked != null) {
@@ -121,7 +123,7 @@ export default class Daily extends Component {
             }
           })}
         </List>
-      </div>
+      </React.Fragment>
     )
   }
 }

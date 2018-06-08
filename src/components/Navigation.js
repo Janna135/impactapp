@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import styled from 'react-emotion'
 import StyledNavLink from './StyledNavLink'
 
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-
 const Wrapper = styled('div')`
   display: flex;
   justify-content: center;
@@ -18,6 +16,8 @@ const StyledButton = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
+  grid-row: 3;
+  position: sticky;
 
   :first-child{
     border-radius 5px 0 0 5px;
