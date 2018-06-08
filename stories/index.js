@@ -7,6 +7,7 @@ import CountButton from '../src/components/CountButton'
 import DateSelect from '../src/components/DateSelect'
 import SwitchButton from '../src/components/SwitchButton'
 import Navigation from '../src/components/Navigation'
+import SavedHabits from '../src/components/SavedHabits'
 
 storiesOf('CountButton', module).add('default', () => (
   <CountButton text={'km Rad gefahren'} count={'3'} onCLick={'click'} />
@@ -23,6 +24,10 @@ storiesOf('Navigation', module)
   .add('select right', () => (
     <Navigation selected={1} onClick={action('click')} />
   ))
+
+storiesOf('SavedHabits', module).add('default', () => (
+  <SavedHabits date={'08.06.2018'} habits={'Essen gehen'} />
+))
 
 storiesOf('SwitchButton, module')
   .add('left selected', () => (
