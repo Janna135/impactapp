@@ -7,9 +7,10 @@ const Wrapper = styled('div')`
   justify-content: center;
   width: 100%;
   position: sticky;
-`
+grid-row: 3;
+  `
 
-export default class SwitchButton extends Component {
+export default class Navigation extends Component {
   render() {
     return (
       <Wrapper>
