@@ -1,47 +1,47 @@
 import moment from 'moment'
 
-export default function (state, action){
-  switch(action.type){
+export default function(state, action) {
+  switch (action.type) {
     case 'TOGGLE_HABIT':
-    return updateHistory (state, action.id, oldValue => !oldValue)
+      return updateHistory(state, action.id, oldValue => !oldValue)
 
-    case 'INCREASE_COUNT': 
-    return updateHistory(
-      state,
-      action.id,
-      oldValue => (oldValue == null ? 1: oldValue +1)
-    )
+    case 'INCREASE_COUNT':
+      return updateHistory(
+        state,
+        action.id,
+        oldValue => (oldValue == null ? 1 : oldValue + 1)
+      )
 
-    case 'DECREASE_COUNT': 
-    return updateHistory(
-      state,
-      action.id,
-      oldValue => (oldValue == null || oldValue === 0 ? 0 : oldValue -1)
-    )
+    case 'DECREASE_COUNT':
+      return updateHistory(
+        state,
+        action.id,
+        oldValue => (oldValue == null || oldValue === 0 ? 0 : oldValue - 1)
+      )
 
     case 'MOVE_DAY_LEFT':
-    return{
-      ...state,
-      dayOffset: state.dayOffset -1,
-    }
+      return {
+        ...state,
+        dayOffset: state.dayOffset - 1
+      }
 
     case 'MOVE_DAY_RIGHT':
-    return {
-      ...state,
-      dayOffset: state.dayOffset +1
-    }
-    default: 
-    return state
+      return {
+        ...state,
+        dayOffset: state.dayOffset === 0 ? 0 : state.dayOffset + 1
+      }
+    default:
+      return state
   }
 }
 
-export function getCurrentDate(oldState){
+export function getCurrentDate(oldState) {
   return moment()
-  .add(oldState.dayOffset, 'days')
-  .format('DD.MM.YYYY')
+    .add(oldState.dayOffset, 'days')
+    .format('DD.MM.YYYY')
 }
 
-function updateHistory(state, id, updateFunction){
+function updateHistory(state, id, updateFunction) {
   const oldEntries = state.history[getCurrentDate(state)] || {}
   const oldValue = oldEntries[id]
 
@@ -53,7 +53,7 @@ function updateHistory(state, id, updateFunction){
     ...state,
     history: {
       ...state.history,
-      [getCurrentDate(state)]: updatedEntries,
-    },
+      [getCurrentDate(state)]: updatedEntries
+    }
   }
 }

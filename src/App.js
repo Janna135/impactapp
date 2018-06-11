@@ -5,21 +5,13 @@ import globalStyles from './styles/global'
 import Grid from './styles/Grid'
 import styled from 'react-emotion'
 
-import TodayPage from './components/TodayPage'
+import TodayPageView from './containers/TodayPageView'
 import HistoryPage from './components/HistoryPage'
 import Navigation from './components/Navigation'
 
 import { createStore } from 'redux'
 import reducer, { getCurrentDate } from './reducers/reducer'
 import initialState from './reducers/initialState'
-
-import {
-  toggleHabit,
-  increaseCount,
-  decreaseCount,
-  moveDayLeft,
-  moveDayRight
-} from './actions/actions'
 
 globalStyles()
 
@@ -29,13 +21,39 @@ const Main = styled('main')`
 
 const store = createStore(
   reducer,
-  initialState,
+  setupState(),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
+
+function setupState() {
+  let state = localStorage.getItem('state')
+  if (state) {
+    return { ...JSON.parse(state), dayOffset: 0 }
+  } else {
+    return initialState
+  }
+}
 
 class App extends Component {
   componentDidMount() {
     store.subscribe(() => this.forceUpdate())
+    window.addEventListener('beforeunload', () => {
+      this.saveStateToLocalStorage()
+    })
+  }
+
+  componentWillUnmount() {
+    this.saveStateToLocalStorage()
+    window.removeEventListener(
+      'beforeunload',
+      this.saveStateToLocalStorage.bind(this)
+    )
+  }
+
+  saveStateToLocalStorage() {
+    // for every item in React state
+    const state = store.getState()
+    localStorage.setItem('state', JSON.stringify(state))
   }
 
   render() {
@@ -49,24 +67,7 @@ class App extends Component {
         <Router>
           <Grid>
             <Main>
-              <Route
-                exact
-                path="/"
-                render={() => (
-                  <TodayPage
-                    habits={state.habits}
-                    data={state.history}
-                    dayOffset={state.dayOffset}
-                    currentDate={getCurrentDate(state)}
-                    moveDayLeft={dispatch(moveDayLeft)}
-                    moveDayRight={dispatch(moveDayRight)}
-                    toggleHabit={dispatch(toggleHabit)}
-                    increaseCount={dispatch(increaseCount)}
-                    decreaseCount={dispatch(decreaseCount)}
-                  />
-                )}
-              />
-
+              <Route exact path="/" component={TodayPageView} />
               <Route
                 path="/history"
                 render={() => (
