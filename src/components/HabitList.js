@@ -1,18 +1,8 @@
 import React, { Component } from 'react'
-import styled from 'react-emotion'
 
 import CountButton from './CountButton'
 import ToggleButton from './ToggleButton'
-
-const List = styled('div')`
-  grid-row: 2;
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  overflow-x: scroll;
-`
+import List from '../styles/List'
 
 export default class HabitList extends Component {
   render() {

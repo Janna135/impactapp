@@ -16,7 +16,7 @@ import initialState from './reducers/initialState'
 globalStyles()
 
 const Main = styled('main')`
-  grid-row: 2;
+  background-color: #004e64;
 `
 
 const store = createStore(

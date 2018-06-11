@@ -9,6 +9,11 @@ const StyledDiv = styled('div')`
   width: 100%;
   padding: 5px;
   box-sizing: border-box;
+  margin-bottom: 5px;
+
+  :last-child {
+    margin-bottom: 0;
+  }
 `
 
 export default class SavedHabits extends Component {

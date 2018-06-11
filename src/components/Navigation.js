@@ -7,8 +7,9 @@ const Wrapper = styled('div')`
   justify-content: center;
   width: 100%;
   position: sticky;
-grid-row: 3;
-  `
+  margin-bottom: 10px;
+  grid-row: 3;
+`
 
 export default class Navigation extends Component {
   render() {
