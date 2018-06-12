@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 
-import List from '../styles/List'
-import SavedHabits from './SavedHabits'
+import SavedHabits from '../components/SavedHabits'
+import SwitchButton from '../components/SwitchButton'
 
-export default class HistoryPage extends Component {
+import List from '../styles/List'
+
+export default class HistoryList extends Component {
   render() {
     const { data: history, habits } = this.props
-
     return (
-      <React.Fragment>
-        <h3>History</h3>
+      <div>
+        <SwitchButton />
         <List>
           {Object.keys(history).map(date => {
             const dateHistory = history[date]
@@ -23,14 +24,14 @@ export default class HistoryPage extends Component {
                   if (habitType === 'toggle') {
                     return <li key={uid}>{`${habitName}`}</li>
                   } else if (habitType === 'count') {
-                    return <li key={uid}>{`${habitName}: ${value}`}</li>
+                    return <li key={uid}>{`${value} ${habitName}`}</li>
                   }
                 })}
               />
             )
           })}
         </List>
-      </React.Fragment>
+      </div>
     )
   }
 }

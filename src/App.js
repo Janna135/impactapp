@@ -6,8 +6,10 @@ import Grid from './styles/Grid'
 import styled from 'react-emotion'
 
 import TodayPageView from './containers/TodayPageView'
-import HistoryPage from './components/HistoryPage'
+import HistoryPage from './pages/HistoryPage'
 import Navigation from './components/Navigation'
+import HistoryListPage from './pages/HistoryListPage'
+import OverviewPage from './pages/OverviewPage'
 
 import { createStore } from 'redux'
 import reducer, { getCurrentDate } from './reducers/reducer'
@@ -69,11 +71,19 @@ class App extends Component {
             <Main>
               <Route exact path="/" component={TodayPageView} />
               <Route
+                exact
                 path="/history"
                 render={() => (
                   <HistoryPage habits={state.habits} data={state.history} />
                 )}
               />
+              <Route
+                path="/history/days"
+                render={() => (
+                  <HistoryListPage habits={state.habits} data={state.history} />
+                )}
+              />
+              <Route path="/history/overview" component={OverviewPage} />
             </Main>
             <Navigation />
           </Grid>

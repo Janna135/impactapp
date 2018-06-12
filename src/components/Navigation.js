@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'react-emotion'
-import StyledNavLink from './StyledNavLink'
+import StyledNavLink from '../styles/StyledNavLink'
 
 const Wrapper = styled('div')`
   display: flex;
