@@ -17,7 +17,8 @@ const StyledButton = styled('div')`
   align-items: center;
   margin: 5px;
   height: 45px;
-  width: 300px;
+  width: 100%;
+  flex-shrink: 0;
 `
 
 export default class ToggleButton extends Component {

@@ -8,11 +8,14 @@ const StyledButton = styled('div')`
   font-family: sans-serif;
   font-weight: bold;
   height: 50px;
-  width: 300px;
-  margin: 5px;
+  width: 100%;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
 `
 
 const SideButton = styled('div')`

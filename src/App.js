@@ -1,115 +1,84 @@
 import React, { Component } from 'react'
-import styled from 'react-emotion'
-import habits from './data/habits'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Provider } from 'react-redux'
 import globalStyles from './styles/global'
-import moment from 'moment'
+import Grid from './styles/Grid'
+import styled from 'react-emotion'
 
-import ToggleButton from './components/ToggleButton'
-import CountButton from './components/CountButton'
-import DateSelect from './components/DateSelect'
+import TodayPageView from './containers/TodayPageView'
+import HistoryPage from './components/HistoryPage'
+import Navigation from './components/Navigation'
+
+import { createStore } from 'redux'
+import reducer, { getCurrentDate } from './reducers/reducer'
+import initialState from './reducers/initialState'
 
 globalStyles()
 
-const Grid = styled('div')`
-  display: grid;
-  grid-template-rows: auto;
-  height: 100vh;
+const Main = styled('main')`
+  background-color: #004e64;
 `
-const List = styled('div')`
-  grid-row: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-`
+
+const store = createStore(
+  reducer,
+  setupState(),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+
+function setupState() {
+  let state = localStorage.getItem('state')
+  if (state) {
+    return { ...JSON.parse(state), dayOffset: 0 }
+  } else {
+    return initialState
+  }
+}
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      habits: habits,
-      dayOffset: 0
-    }
+  componentDidMount() {
+    store.subscribe(() => this.forceUpdate())
+    window.addEventListener('beforeunload', () => {
+      this.saveStateToLocalStorage()
+    })
   }
 
-  updateHabitState(id, changeFunction) {
-    const allHabits = this.state.habits
-    const habitIndex = allHabits.findIndex(habit => habit.id === id)
-    const oldHabit = allHabits[habitIndex]
-
-    const newHabits = [
-      ...allHabits.slice(0, habitIndex),
-      { ...oldHabit, ...changeFunction(oldHabit) },
-      ...allHabits.slice(habitIndex + 1)
-    ]
-
-    this.setState({ habits: newHabits })
+  componentWillUnmount() {
+    this.saveStateToLocalStorage()
+    window.removeEventListener(
+      'beforeunload',
+      this.saveStateToLocalStorage.bind(this)
+    )
   }
 
-  toggleHabit(id) {
-    this.updateHabitState(id, oldHabit => ({ checked: !oldHabit.checked }))
-  }
-
-  increaseCount(id) {
-    this.updateHabitState(id, oldHabit => ({ count: oldHabit.count + 1 }))
-  }
-
-  decreaseCount(id) {
-    this.updateHabitState(id, oldHabit => ({ count: oldHabit.count - 1 }))
-  }
-
-  get currentDate() {
-    return moment()
-      .add(this.state.dayOffset, 'days')
-      .format('DD.MM.YYYY')
-  }
-
-  moveDayLeft() {
-    this.setState(state => ({ dayOffset: this.state.dayOffset - 1 }))
-  }
-
-  moveDayRight() {
-    if (this.state.dayOffset === 0) {
-      return
-    } else {
-      this.setState({ dayOffset: this.state.dayOffset + 1 })
-    }
+  saveStateToLocalStorage() {
+    // for every item in React state
+    const state = store.getState()
+    localStorage.setItem('state', JSON.stringify(state))
   }
 
   render() {
+    const state = store.getState()
+
+    const dispatch = actionCreator => payload =>
+      store.dispatch(actionCreator(payload))
+
     return (
-      <Grid>
-        <List>
-          <DateSelect
-            text={this.currentDate}
-            onLeft={e => this.moveDayLeft()}
-            onRight={e => this.moveDayRight()}
-          />
-          {this.state.habits.map(habit => {
-            if (habit.checked != null) {
-              return (
-                <ToggleButton
-                  text={habit.text}
-                  checked={habit.checked}
-                  key={habit.id}
-                  onClick={e => this.toggleHabit(habit.id)}
-                />
-              )
-            } else if (habit.count != null) {
-              return (
-                <CountButton
-                  text={habit.text}
-                  count={habit.count}
-                  key={habit.id}
-                  onIncrease={e => this.increaseCount(habit.id)}
-                  onDecrease={e => this.decreaseCount(habit.id)}
-                />
-              )
-            }
-          })}
-        </List>
-      </Grid>
+      <Provider store={store}>
+        <Router>
+          <Grid>
+            <Main>
+              <Route exact path="/" component={TodayPageView} />
+              <Route
+                path="/history"
+                render={() => (
+                  <HistoryPage habits={state.habits} data={state.history} />
+                )}
+              />
+            </Main>
+            <Navigation />
+          </Grid>
+        </Router>
+      </Provider>
     )
   }
 }
