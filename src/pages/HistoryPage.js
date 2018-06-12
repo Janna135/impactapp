@@ -14,7 +14,7 @@ export default class HistoryPage extends Component {
       <React.Fragment>
         <Grid>
           <SwitchButton />
-          <List />
+          <List>What do you want to see?</List>
           <Navigation />
         </Grid>
       </React.Fragment>

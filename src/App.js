@@ -53,7 +53,6 @@ class App extends Component {
   }
 
   saveStateToLocalStorage() {
-    // for every item in React state
     const state = store.getState()
     localStorage.setItem('state', JSON.stringify(state))
   }

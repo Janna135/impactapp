@@ -5,6 +5,7 @@ export default styled(NavLink)`
   background-color: ${props => (props.disabled ? '#7AE582' : '#004E64')};
   border: 1px solid #9fffcb;
   font-size: 1rem;
+  font-weight: bold;
   height: 50px;
   width: 150px;
   display: flex;
