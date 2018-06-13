@@ -82,7 +82,12 @@ class App extends Component {
                   <HistoryListPage habits={state.habits} data={state.history} />
                 )}
               />
-              <Route path="/history/overview" component={OverviewPage} />
+              <Route
+                path="/history/overview"
+                render={() => (
+                  <OverviewPage habits={state.habits} data={state.history} />
+                )}
+              />
             </Main>
             <Navigation />
           </Grid>
