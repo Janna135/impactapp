@@ -18,11 +18,14 @@ const CountStyle = styled('span')`
 
 export default class OverviewHabit extends Component {
   render() {
-    const { count, text } = this.props
+    const { count, text, placeholder } = this.props
 
     return (
       <StyledDiv>
-        <CountStyle>{count}x</CountStyle> {text}
+        <CountStyle>
+          {count} {placeholder}
+        </CountStyle>{' '}
+        {text}
       </StyledDiv>
     )
   }

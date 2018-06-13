@@ -30,13 +30,8 @@ export default class OverviewPage extends Component {
     return foundHabit.text
   }
 
-  findHabitType(habits, uid) {
-    const foundHabit = habits.find(habit => habit.id === uid)
-    return foundHabit.type
-  }
-
   render() {
-    const { data, text, habits } = this.props
+    const { data, habits, uid } = this.props
     const statistics = this.aggregateStatistics(data)
 
     return (
@@ -47,6 +42,7 @@ export default class OverviewPage extends Component {
             return (
               <OverviewHabit
                 count={statistics[uid]}
+                placeholder={'x'}
                 text={this.findHabitName(habits, uid)}
               />
             )
