@@ -7,6 +7,7 @@ import CountButton from '../src/components/CountButton'
 import DateSelect from '../src/components/DateSelect'
 import SwitchButton from '../src/components/SwitchButton'
 import Navigation from '../src/components/Navigation'
+import OverviewHabit from '../src/components/OverviewHabit'
 import SavedHabits from '../src/components/SavedHabits'
 
 storiesOf('CountButton', module).add('default', () => (
@@ -27,6 +28,10 @@ storiesOf('Navigation', module)
 
 storiesOf('SavedHabits', module).add('default', () => (
   <SavedHabits date={'08.06.2018'} habits={'Essen gehen'} />
+))
+
+storiesOf('OverviewHabit', module).add('default', () => (
+  <OverviewHabit count={'3'} text={'Müll trennen'} />
 ))
 
 storiesOf('SwitchButton, module')

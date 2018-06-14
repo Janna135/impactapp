@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { css } from 'react-emotion'
 import styled from 'react-emotion'
 
-import DateSelect from './DateSelect'
-import HabitList from './HabitList'
+import DateSelect from '../components/DateSelect'
+import HabitList from '../components/HabitList'
 
 const headerstyle = css`
   display: flex;

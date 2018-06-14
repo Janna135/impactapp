@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import StyledButton from './StyledButton'
-import SideButton from './SideButton'
+import StyledButton from '../styles/StyledButton'
+import SideButton from '../styles/SideButton'
 
 export default class CountButton extends Component {
   render() {

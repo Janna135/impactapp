@@ -6,11 +6,11 @@ import List from '../styles/List'
 
 export default class HabitList extends Component {
   render() {
-    const data = this.props.data
+    const { data, habits } = this.props
 
     return (
       <List>
-        {this.props.habits.map(habit => {
+        {habits.map(habit => {
           if (habit.type === 'toggle') {
             return (
               <ToggleButton

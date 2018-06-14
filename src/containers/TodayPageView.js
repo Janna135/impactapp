@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import TodayPage from '../components/TodayPage'
+import TodayPage from '../pages/TodayPage'
 import { getCurrentDate } from '../reducers/reducer'
 
 import {
