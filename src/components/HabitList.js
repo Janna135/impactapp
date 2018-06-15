@@ -1,15 +1,28 @@
 import React, { Component } from 'react'
+import styled from 'react-emotion'
 
 import CountButton from './CountButton'
 import ToggleButton from './ToggleButton'
-import List from '../styles/List'
+
+const Headline = styled('span')`
+  color: #7ae582;
+  font-size: 1.3rem;
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+`
+
+const Div = styled('div')`
+  width: 95%;
+`
 
 export default class HabitList extends Component {
   render() {
-    const { data, habits } = this.props
+    const { data, habits, headline } = this.props
 
     return (
-      <List>
+      <Div>
+        <Headline>{headline}</Headline>
         {habits.map(habit => {
           if (habit.type === 'toggle') {
             return (
@@ -36,7 +49,7 @@ export default class HabitList extends Component {
             )
           }
         })}
-      </List>
+      </Div>
     )
   }
 }
