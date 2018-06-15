@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToggleButton changes the color 1`] = `
+<Styled(div)
+  checked={false}
+  onClick={[Function]}
+>
+  foo
+</Styled(div)>
+`;
+
+exports[`ToggleButton changes the color 2`] = `
+<Styled(div)
+  checked={true}
+  onClick={[Function]}
+>
+  foo
+</Styled(div)>
+`;
+
+exports[`ToggleButton has a matching snapshot 1`] = `
+<Styled(div)
+  checked={false}
+  onClick={[Function]}
+>
+  foo
+</Styled(div)>
+`;
