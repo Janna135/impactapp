@@ -22,9 +22,9 @@ export default class SavedHabits extends Component {
     return (
       <StyledDiv>
         <h4>{date}</h4>
-        <b>Good</b>
+        <b>Gut</b>
         <ul>{goodHabits}</ul>
-        <b>Bad</b>
+        <b>Schlecht</b>
         <ul>{badHabits}</ul>
       </StyledDiv>
     )

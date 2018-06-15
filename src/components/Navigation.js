@@ -16,10 +16,10 @@ export default class Navigation extends Component {
     return (
       <Wrapper>
         <StyledNavLink to="/" exact activeStyle={{ background: '#7AE582' }}>
-          Today
+          Heute
         </StyledNavLink>
         <StyledNavLink to="/history" activeStyle={{ background: '#7AE582' }}>
-          History
+          Entwicklung
         </StyledNavLink>
       </Wrapper>
     )

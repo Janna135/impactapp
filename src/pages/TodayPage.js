@@ -43,7 +43,7 @@ export default class TodayPage extends Component {
         <Main>
           <List>
             <HabitList
-              headline={'Good'}
+              headline={'Gut'}
               data={history[currentDate]}
               habits={habits.filter(habit => habit.category === 'good')}
               onToggle={toggleHabit}
@@ -51,7 +51,7 @@ export default class TodayPage extends Component {
               onDecrease={decreaseCount}
             />
             <HabitList
-              headline={'Bad'}
+              headline={'Schlecht'}
               data={history[currentDate]}
               habits={habits.filter(habit => habit.category === 'bad')}
               onToggle={toggleHabit}

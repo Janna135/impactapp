@@ -20,13 +20,13 @@ export default class SwitchButton extends Component {
           to="/history/overview"
           activeStyle={{ background: '#7AE582' }}
         >
-          Overview
+          Übersicht
         </StyledSmallNavLink>
         <StyledSmallNavLink
           to="/history/days"
           activeStyle={{ background: '#7AE582' }}
         >
-          Days
+          Tage
         </StyledSmallNavLink>
       </Wrapper>
     )

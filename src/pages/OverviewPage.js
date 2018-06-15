@@ -43,7 +43,7 @@ export default class OverviewPage extends Component {
       <React.Fragment>
         <SwitchButton />
         <List>
-          <b>Good</b>
+          <b>Gut</b>
           {Object.keys(statistics).map(uid => {
             if (this.findHabitCategory(habits, uid) === 'good')
               return (
@@ -54,7 +54,7 @@ export default class OverviewPage extends Component {
                 />
               )
           })}
-          <b>Bad</b>
+          <b>Schlecht</b>
           {Object.keys(statistics).map(uid => {
             if (this.findHabitCategory(habits, uid) === 'bad')
               return (
