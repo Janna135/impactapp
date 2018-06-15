@@ -30,6 +30,11 @@ export default class OverviewPage extends Component {
     return foundHabit.text
   }
 
+  findHabitCategory(habits, uid) {
+    const foundHabit = habits.find(habit => habit.id === uid)
+    return foundHabit.category
+  }
+
   render() {
     const { data, habits, uid } = this.props
     const statistics = this.aggregateStatistics(data)
@@ -38,14 +43,27 @@ export default class OverviewPage extends Component {
       <React.Fragment>
         <SwitchButton />
         <List>
+          <b>Good</b>
           {Object.keys(statistics).map(uid => {
-            return (
-              <OverviewHabit
-                count={statistics[uid]}
-                placeholder={'x'}
-                text={this.findHabitName(habits, uid)}
-              />
-            )
+            if (this.findHabitCategory(habits, uid) === 'good')
+              return (
+                <OverviewHabit
+                  count={statistics[uid]}
+                  placeholder={'x'}
+                  text={this.findHabitName(habits, uid)}
+                />
+              )
+          })}
+          <b>Bad</b>
+          {Object.keys(statistics).map(uid => {
+            if (this.findHabitCategory(habits, uid) === 'bad')
+              return (
+                <OverviewHabit
+                  count={statistics[uid]}
+                  placeholder={'x'}
+                  text={this.findHabitName(habits, uid)}
+                />
+              )
           })}
         </List>
       </React.Fragment>

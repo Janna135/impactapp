@@ -1,16 +1,10 @@
 import React, { Component } from 'react'
 import styled from 'react-emotion'
 
+import Headline from '../styles/Headline'
+
 import CountButton from './CountButton'
 import ToggleButton from './ToggleButton'
-
-const Headline = styled('span')`
-  color: #7ae582;
-  font-size: 1.3rem;
-  font-weight: bolder;
-  display: flex;
-  justify-content: center;
-`
 
 const Div = styled('div')`
   width: 95%;

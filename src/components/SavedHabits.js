@@ -18,11 +18,14 @@ const StyledDiv = styled('div')`
 
 export default class SavedHabits extends Component {
   render() {
-    const { date, habits } = this.props
+    const { date, goodHabits, badHabits } = this.props
     return (
       <StyledDiv>
         <h4>{date}</h4>
-        <ul>{habits}</ul>
+        <b>Good</b>
+        <ul>{goodHabits}</ul>
+        <b>Bad</b>
+        <ul>{badHabits}</ul>
       </StyledDiv>
     )
   }
