@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import SwitchButton from '../components/SwitchButton'
+import SwitchButtonHistory from '../components/SwitchButtonHistory'
 import OverviewHabit from '../components/OverviewHabit'
 
 import List from '../styles/List'
@@ -41,7 +41,7 @@ export default class OverviewPage extends Component {
 
     return (
       <React.Fragment>
-        <SwitchButton />
+        <SwitchButtonHistory />
         <List>
           <b>Gut</b>
           {Object.keys(statistics).map(uid => {

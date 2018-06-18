@@ -6,7 +6,7 @@ export default styled(NavLink)`
   border: 1px solid #9fffcb;
   font-size: 1.3rem;
   height: 50px;
-  width: 150px;
+  min-width: 100px;
   display: flex;
   justify-content: center;
   align-items: center;

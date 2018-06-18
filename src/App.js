@@ -10,6 +10,7 @@ import HistoryPage from './pages/HistoryPage'
 import Navigation from './components/Navigation'
 import HistoryListPage from './pages/HistoryListPage'
 import OverviewPage from './pages/OverviewPage'
+import SettingsPage from './pages/SettingsPage'
 
 import { createStore } from 'redux'
 import reducer, { getCurrentDate } from './reducers/reducer'
@@ -87,6 +88,11 @@ class App extends Component {
                 render={() => (
                   <OverviewPage habits={state.habits} data={state.history} />
                 )}
+              />
+              <Route
+                exact
+                path="/settings"
+                render={() => <SettingsPage habits={state.habits} />}
               />
             </Main>
             <Navigation />
