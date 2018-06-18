@@ -6,17 +6,17 @@ const StyledInput = styled('input')`
 `
 const StyledDiv = styled('div')`
   font-size: 1.3rem;
-  background-color: #7ae582;
-  color: #25a18e;
+  background-color: #9fffcb;
+  color: #004e64;
   padding-bottom: 5px;
 `
 
 export default class HabitSettingsItem extends Component {
   render() {
-    const { text } = this.props
+    const { text, onSelect, active } = this.props
     return (
       <StyledDiv>
-        <StyledInput type="checkbox" />
+        <StyledInput type="checkbox" onClick={onSelect} checked={active} />
         <label>{text}</label>
       </StyledDiv>
     )

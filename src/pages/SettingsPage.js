@@ -17,7 +17,7 @@ const StyledHeadline = styled('h2')`
   justify-content: center;
 `
 
-const SmallHeadline = styled('h4')`
+const SmallHeadline = styled('h3')`
   color: #7ae582;
   display: flex;
   justify-content: center;
@@ -25,6 +25,8 @@ const SmallHeadline = styled('h4')`
 
 export default class SettingsPage extends Component {
   render() {
+    const { data, habits } = this.props
+
     return (
       <List>
         <StyledHeadline>Auswahl</StyledHeadline>
@@ -32,13 +34,25 @@ export default class SettingsPage extends Component {
           <SmallHeadline>Gut</SmallHeadline>
           {habits.map(habit => {
             if (habit.category === 'good') {
-              return <HabitSettingsItem text={habit.text} />
+              return (
+                <HabitSettingsItem
+                  text={habit.text}
+                  onSelect={e => this.props.selectHabit(habit.id)}
+                  checked={(data && data[habit.id]) || false}
+                />
+              )
             }
           })}
           <SmallHeadline>Schlecht</SmallHeadline>
           {habits.map(habit => {
             if (habit.category === 'bad') {
-              return <HabitSettingsItem text={habit.text} />
+              return (
+                <HabitSettingsItem
+                  text={habit.text}
+                  onSelect={e => this.props.selectHabit(habit.id)}
+                  checked={(data && data[habit.id]) || false}
+                />
+              )
             }
           })}
         </StyledDiv>

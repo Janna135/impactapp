@@ -30,3 +30,9 @@ export function moveDayRight() {
     type: 'MOVE_DAY_RIGHT'
   }
 }
+export function selectHabit(id) {
+  return {
+    type: 'SELECT_HABIT',
+    id
+  }
+}
