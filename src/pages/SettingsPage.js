@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import styled from 'react-emotion'
+import List from '../styles/List'
 
 import habits from '../data/habits'
 
@@ -16,17 +17,32 @@ const StyledHeadline = styled('h2')`
   justify-content: center;
 `
 
+const SmallHeadline = styled('h4')`
+  color: #7ae582;
+  display: flex;
+  justify-content: center;
+`
+
 export default class SettingsPage extends Component {
   render() {
     return (
-      <React.Fragment>
+      <List>
         <StyledHeadline>Auswahl</StyledHeadline>
         <StyledDiv>
+          <SmallHeadline>Gut</SmallHeadline>
           {habits.map(habit => {
-            return <HabitSettingsItem text={habit.text} />
+            if (habit.category === 'good') {
+              return <HabitSettingsItem text={habit.text} />
+            }
+          })}
+          <SmallHeadline>Schlecht</SmallHeadline>
+          {habits.map(habit => {
+            if (habit.category === 'bad') {
+              return <HabitSettingsItem text={habit.text} />
+            }
           })}
         </StyledDiv>
-      </React.Fragment>
+      </List>
     )
   }
 }

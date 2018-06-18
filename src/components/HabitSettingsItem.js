@@ -9,13 +9,6 @@ const StyledDiv = styled('div')`
   background-color: #7ae582;
   color: #25a18e;
   padding-bottom: 5px;
-
-  :first-child {
-    border-radius: 5px 5px 0 0;
-  }
-  :last-child {
-    border-radius: 0 0 5px 5px;
-  }
 `
 
 export default class HabitSettingsItem extends Component {
