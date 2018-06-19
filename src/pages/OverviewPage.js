@@ -36,7 +36,7 @@ export default class OverviewPage extends Component {
   }
 
   render() {
-    const { data, habits, uid } = this.props
+    const { data, habits } = this.props
     const statistics = this.aggregateStatistics(data)
 
     return (

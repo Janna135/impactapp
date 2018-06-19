@@ -13,7 +13,7 @@ import HistoryListPage from './pages/HistoryListPage'
 import OverviewPage from './pages/OverviewPage'
 
 import { createStore } from 'redux'
-import reducer, { getCurrentDate } from './reducers/reducer'
+import reducer from './reducers/reducer'
 import initialState from './reducers/initialState'
 
 globalStyles()
@@ -60,9 +60,6 @@ class App extends Component {
 
   render() {
     const state = store.getState()
-
-    const dispatch = actionCreator => payload =>
-      store.dispatch(actionCreator(payload))
 
     return (
       <Provider store={store}>

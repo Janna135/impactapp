@@ -25,7 +25,7 @@ const SmallHeadline = styled('h3')`
 
 export default class SettingsPage extends Component {
   render() {
-    const { data, habits } = this.props
+    const { habits } = this.props
 
     return (
       <List>

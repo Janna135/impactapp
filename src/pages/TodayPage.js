@@ -28,8 +28,7 @@ export default class TodayPage extends Component {
       increaseCount,
       decreaseCount,
       habits,
-      data: history,
-      dayOffset
+      data: history
     } = this.props
 
     return (
