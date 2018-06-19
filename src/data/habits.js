@@ -8,7 +8,13 @@ export default [
     id: uid(),
     active: true
   },
-  { text: 'Lokal eingekauft', type: 'toggle', category: 'good', id: uid() },
+  {
+    text: 'Lokal eingekauft',
+    type: 'toggle',
+    category: 'good',
+    id: uid(),
+    active: true
+  },
   {
     text: 'Mit dem Fahrrad zur Arbeit',
     type: 'toggle',
@@ -16,7 +22,13 @@ export default [
     id: uid(),
     active: true
   },
-  { text: 'km Rad gefahren', type: 'count', category: 'good', id: uid() },
+  {
+    text: 'km Rad gefahren',
+    type: 'count',
+    category: 'good',
+    id: uid(),
+    active: true
+  },
   {
     text: 'Gemüse/ Obst ohne Plastik gekauft',
     category: 'good',
@@ -25,7 +37,13 @@ export default [
     active: true
   },
 
-  { text: 'Müll getrennt', type: 'toggle', category: 'good', id: uid() },
+  {
+    text: 'Müll getrennt',
+    type: 'toggle',
+    category: 'good',
+    id: uid(),
+    active: true
+  },
   {
     text: 'Müll auf der Straße aufgehoben',
     category: 'good',

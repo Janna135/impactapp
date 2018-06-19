@@ -4,7 +4,7 @@ import styled from 'react-emotion'
 export default styled(NavLink)`
   background-color: ${props => (props.disabled ? '#7AE582' : '#004E64')};
   border: 1px solid #9fffcb;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   height: 50px;
   min-width: 100px;
   display: flex;

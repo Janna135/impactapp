@@ -38,7 +38,7 @@ export default class SettingsPage extends Component {
                 <HabitSettingsItem
                   text={habit.text}
                   onSelect={e => this.props.selectHabit(habit.id)}
-                  checked={(data && data[habit.id]) || false}
+                  active={habit.active || false}
                 />
               )
             }
@@ -50,7 +50,7 @@ export default class SettingsPage extends Component {
                 <HabitSettingsItem
                   text={habit.text}
                   onSelect={e => this.props.selectHabit(habit.id)}
-                  checked={(data && data[habit.id]) || false}
+                  active={habit.active || false}
                 />
               )
             }
