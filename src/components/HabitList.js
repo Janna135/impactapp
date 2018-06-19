@@ -13,11 +13,12 @@ const Div = styled('div')`
 export default class HabitList extends Component {
   render() {
     const { data, habits, headline } = this.props
+    const activeHabits = habits.filter(habit => habit.active === true)
 
     return (
       <Div>
         <Headline>{headline}</Headline>
-        {habits.map(habit => {
+        {activeHabits.map(habit => {
           if (habit.type === 'toggle') {
             return (
               <ToggleButton

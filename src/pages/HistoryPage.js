@@ -9,7 +9,6 @@ import Navigation from '../components/Navigation'
 
 export default class HistoryPage extends Component {
   render() {
-    const { data: history, habits } = this.props
     return (
       <React.Fragment>
         <Grid>
