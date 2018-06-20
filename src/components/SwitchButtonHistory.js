@@ -17,7 +17,8 @@ export default class SwitchButtonHistory extends Component {
     return (
       <Wrapper>
         <StyledSmallNavLink
-          to="/history/overview"
+          exact
+          to="/history"
           activeStyle={{ background: '#7AE582' }}
         >
           Übersicht

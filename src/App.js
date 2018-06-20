@@ -11,6 +11,7 @@ import HistoryPage from './pages/HistoryPage'
 import Navigation from './components/Navigation'
 import HistoryListPage from './pages/HistoryListPage'
 import OverviewPage from './pages/OverviewPage'
+import SettingsFormPage from './pages/SettingsFormPage'
 
 import { createStore } from 'redux'
 import reducer from './reducers/reducer'
@@ -68,25 +69,23 @@ class App extends Component {
             <Main>
               <Route exact path="/" component={TodayPageView} />
               <Route
-                exact
-                path="/history"
-                render={() => (
-                  <HistoryPage habits={state.habits} data={state.history} />
-                )}
-              />
-              <Route
                 path="/history/days"
                 render={() => (
                   <HistoryListPage habits={state.habits} data={state.history} />
                 )}
               />
               <Route
-                path="/history/overview"
+                exact
+                path="/history"
                 render={() => (
                   <OverviewPage habits={state.habits} data={state.history} />
                 )}
               />
               <Route exact path="/settings" component={SettingsPageView} />
+              <Route
+                path="/setting/create"
+                render={() => <SettingsFormPage />}
+              />
             </Main>
             <Navigation />
           </Grid>
