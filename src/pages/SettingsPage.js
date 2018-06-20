@@ -21,35 +21,37 @@ export default class SettingsPage extends Component {
     const { habits } = this.props
 
     return (
-      <List>
+      <div>
         <SwitchButtonSettings />
-        <StyledDiv>
-          <SmallHeadline>Gut</SmallHeadline>
-          {habits.map(habit => {
-            if (habit.category === 'good') {
-              return (
-                <HabitSettingsItem
-                  text={habit.text}
-                  onSelect={e => this.props.selectHabit(habit.id)}
-                  active={habit.active || false}
-                />
-              )
-            }
-          })}
-          <SmallHeadline>Schlecht</SmallHeadline>
-          {habits.map(habit => {
-            if (habit.category === 'bad') {
-              return (
-                <HabitSettingsItem
-                  text={habit.text}
-                  onSelect={e => this.props.selectHabit(habit.id)}
-                  active={habit.active || false}
-                />
-              )
-            }
-          })}
-        </StyledDiv>
-      </List>
+        <List>
+          <StyledDiv>
+            <SmallHeadline>Gut</SmallHeadline>
+            {habits.map(habit => {
+              if (habit.category === 'good') {
+                return (
+                  <HabitSettingsItem
+                    text={habit.text}
+                    onSelect={e => this.props.selectHabit(habit.id)}
+                    active={habit.active || false}
+                  />
+                )
+              }
+            })}
+            <SmallHeadline>Schlecht</SmallHeadline>
+            {habits.map(habit => {
+              if (habit.category === 'bad') {
+                return (
+                  <HabitSettingsItem
+                    text={habit.text}
+                    onSelect={e => this.props.selectHabit(habit.id)}
+                    active={habit.active || false}
+                  />
+                )
+              }
+            })}
+          </StyledDiv>
+        </List>
+      </div>
     )
   }
 }

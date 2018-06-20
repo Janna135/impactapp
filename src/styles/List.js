@@ -8,5 +8,6 @@ const List = styled('div')`
   justify-content: flex-start;
   align-items: center;
   overflow-x: scroll;
+  font-size: 1.2rem;
 `
 export default List

@@ -10,7 +10,7 @@ import SettingsPageView from './containers/SettingsPageView'
 import Navigation from './components/Navigation'
 import HistoryListPage from './pages/HistoryListPage'
 import OverviewPage from './pages/OverviewPage'
-import SettingsFormPage from './pages/SettingsFormPage'
+import SettingsFormPageView from './containers/SettingsFormPageView'
 
 import { createStore } from 'redux'
 import reducer from './reducers/reducer'
@@ -81,10 +81,7 @@ class App extends Component {
                 )}
               />
               <Route exact path="/settings" component={SettingsPageView} />
-              <Route
-                path="/settings/create"
-                render={() => <SettingsFormPage />}
-              />
+              <Route path="/settings/create" component={SettingsFormPageView} />
             </Main>
             <Navigation />
           </Grid>

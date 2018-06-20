@@ -45,6 +45,12 @@ export default function(state, action) {
         ]
       }
 
+    case 'CREATE_HABIT':
+      return {
+        ...state,
+        habits: [...state.habits, action.habit]
+      }
+
     default:
       return state
   }
