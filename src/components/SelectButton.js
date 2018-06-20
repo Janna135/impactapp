@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'react-emotion'
 
-const StyledButton = styled('button')`
+const StyledButton = styled('div')`
   background-color: ${props => (props.disabled ? '#74e582' : '#00A5CF')};
   color: #004e64;
   border: 1px solid #004e64;
