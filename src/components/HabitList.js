@@ -6,7 +6,7 @@ import Headline from '../styles/Headline'
 import CountButton from './CountButton'
 import ToggleButton from './ToggleButton'
 
-const Div = styled('div')`
+const StyledDiv = styled('div')`
   width: 95%;
 `
 
@@ -16,7 +16,7 @@ export default class HabitList extends Component {
     const activeHabits = habits.filter(habit => habit.active === true)
 
     return (
-      <Div>
+      <StyledDiv>
         <Headline>{headline}</Headline>
         {activeHabits.map(habit => {
           if (habit.type === 'toggle') {
@@ -44,7 +44,7 @@ export default class HabitList extends Component {
             )
           }
         })}
-      </Div>
+      </StyledDiv>
     )
   }
 }
