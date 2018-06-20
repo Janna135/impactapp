@@ -7,7 +7,7 @@ import CountButton from './CountButton'
 import ToggleButton from './ToggleButton'
 
 const StyledDiv = styled('div')`
-  width: 95%;
+  width: 100%;
 `
 
 export default class HabitList extends Component {

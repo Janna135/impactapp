@@ -1,21 +1,21 @@
 export function toggleHabit(id) {
   return {
     type: 'TOGGLE_HABIT',
-    id: id
+    id
   }
 }
 
 export function increaseCount(id) {
   return {
     type: 'INCREASE_COUNT',
-    id: id
+    id
   }
 }
 
 export function decreaseCount(id) {
   return {
     type: 'DECREASE_COUNT',
-    id: id
+    id
   }
 }
 
