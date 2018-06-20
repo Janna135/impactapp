@@ -3,18 +3,11 @@ import React, { Component } from 'react'
 import styled from 'react-emotion'
 import List from '../styles/List'
 
-import habits from '../data/habits'
-
 import HabitSettingsItem from '../components/HabitSettingsItem'
+import SwitchButtonSettings from '../components/SwitchButtonSettings'
 
 const StyledDiv = styled('div')`
   grid-row: 2;
-`
-const StyledHeadline = styled('h2')`
-  grid-row: 1;
-  color: #7ae582;
-  display: flex;
-  justify-content: center;
 `
 
 const SmallHeadline = styled('h3')`
@@ -29,7 +22,7 @@ export default class SettingsPage extends Component {
 
     return (
       <List>
-        <StyledHeadline>Auswahl</StyledHeadline>
+        <SwitchButtonSettings />
         <StyledDiv>
           <SmallHeadline>Gut</SmallHeadline>
           {habits.map(habit => {

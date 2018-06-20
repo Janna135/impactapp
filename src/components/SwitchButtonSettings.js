@@ -17,7 +17,8 @@ export default class SwitchButtonSettings extends Component {
     return (
       <Wrapper>
         <StyledSmallNavLink
-          to="/settings/select"
+          exact
+          to="/settings"
           activeStyle={{ background: '#7AE582' }}
         >
           Auswahl

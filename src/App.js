@@ -7,7 +7,6 @@ import styled from 'react-emotion'
 
 import TodayPageView from './containers/TodayPageView'
 import SettingsPageView from './containers/SettingsPageView'
-import HistoryPage from './pages/HistoryPage'
 import Navigation from './components/Navigation'
 import HistoryListPage from './pages/HistoryListPage'
 import OverviewPage from './pages/OverviewPage'
@@ -83,7 +82,7 @@ class App extends Component {
               />
               <Route exact path="/settings" component={SettingsPageView} />
               <Route
-                path="/setting/create"
+                path="/settings/create"
                 render={() => <SettingsFormPage />}
               />
             </Main>
