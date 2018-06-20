@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { css } from 'react-emotion'
 import styled from 'react-emotion'
 
+import List from '../styles/List'
+
 import DateSelect from '../components/DateSelect'
 import HabitList from '../components/HabitList'
 
@@ -39,13 +41,24 @@ export default class TodayPage extends Component {
           onRight={moveDayRight}
         />
         <Main>
-          <HabitList
-            data={history[currentDate]}
-            habits={habits}
-            onToggle={toggleHabit}
-            onIncrease={increaseCount}
-            onDecrease={decreaseCount}
-          />
+          <List>
+            <HabitList
+              headline={'Gut'}
+              data={history[currentDate]}
+              habits={habits.filter(habit => habit.category === 'good')}
+              onToggle={toggleHabit}
+              onIncrease={increaseCount}
+              onDecrease={decreaseCount}
+            />
+            <HabitList
+              headline={'Schlecht'}
+              data={history[currentDate]}
+              habits={habits.filter(habit => habit.category === 'bad')}
+              onToggle={toggleHabit}
+              onIncrease={increaseCount}
+              onDecrease={decreaseCount}
+            />
+          </List>
         </Main>
       </React.Fragment>
     )

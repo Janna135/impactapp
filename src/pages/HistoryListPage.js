@@ -17,13 +17,29 @@ export default class HistoryList extends Component {
             return (
               <SavedHabits
                 date={date}
-                habits={Object.keys(dateHistory).map(uid => {
+                goodHabits={Object.keys(dateHistory).map(uid => {
                   const foundHabit = habits.find(habit => habit.id === uid)
                   const { text, type } = foundHabit
                   const value = dateHistory[uid]
                   const isToggle = type === 'toggle'
                   const textContent = isToggle ? text : `${value} ${text}`
-                  return <li key={uid}>{textContent}</li>
+                  if (foundHabit.category === 'good') {
+                    return <li key={uid}>{textContent}</li>
+                  } else {
+                    return
+                  }
+                })}
+                badHabits={Object.keys(dateHistory).map(uid => {
+                  const foundHabit = habits.find(habit => habit.id === uid)
+                  const { text, type } = foundHabit
+                  const value = dateHistory[uid]
+                  const isToggle = type === 'toggle'
+                  const textContent = isToggle ? text : `${value} ${text}`
+                  if (foundHabit.category === 'bad') {
+                    return <li key={uid}>{textContent}</li>
+                  } else {
+                    return
+                  }
                 })}
               />
             )

@@ -1,32 +1,32 @@
 export function toggleHabit(id) {
   return {
     type: 'TOGGLE_HABIT',
-    id,
+    id: id
   }
 }
 
 export function increaseCount(id) {
   return {
     type: 'INCREASE_COUNT',
-    id,
+    id: id
   }
 }
 
 export function decreaseCount(id) {
   return {
     type: 'DECREASE_COUNT',
-    id,
+    id: id
   }
 }
 
 export function moveDayLeft() {
   return {
-    type: 'MOVE_DAY_LEFT',
+    type: 'MOVE_DAY_LEFT'
   }
 }
 
 export function moveDayRight() {
   return {
-    type: 'MOVE_DAY_RIGHT',
+    type: 'MOVE_DAY_RIGHT'
   }
 }
