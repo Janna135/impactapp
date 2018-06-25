@@ -5,8 +5,6 @@ import styled from 'react-emotion'
 import SwitchButtonSettings from '../components/SwitchButtonSettings'
 import SelectButton from '../components/SelectButton'
 
-import List from '../styles/List'
-
 const Button = styled('div')`
   border: 2px solid #9fffcb;
   border-radius: 5px;
@@ -20,6 +18,14 @@ const Button = styled('div')`
 
 const StyledInput = styled('input')`
   margin: 10px;
+`
+
+const HabitForm = styled('form')`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
 `
 
 export default class SettingsFormPage extends Component {
@@ -53,17 +59,18 @@ export default class SettingsFormPage extends Component {
       habitText: ''
     })
   }
-
   render() {
     return (
       <div>
         <SwitchButtonSettings />
-        <List>
+        <HabitForm>
           <label>Name</label>
           <StyledInput
             type="text"
+            name="name"
             value={this.state.habitText}
             onChange={e => this.setState({ habitText: e.target.value })}
+            required
           />
           Wie kannst Du mein Erledigen überwachen? Mit einem ...
           <SelectButton
@@ -79,8 +86,10 @@ export default class SettingsFormPage extends Component {
             onClick={this.onCategorySelected}
             selectedIndex={this.state.selectedCategory}
           />
-          <Button onClick={this.onCreateHabit}>Speichern</Button>
-        </List>
+          <Button type="submit" onClick={this.onCreateHabit}>
+            Speichern
+          </Button>
+        </HabitForm>
       </div>
     )
   }
