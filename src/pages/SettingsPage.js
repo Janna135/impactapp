@@ -33,6 +33,7 @@ export default class SettingsPage extends Component {
                     text={habit.text}
                     onSelect={e => this.props.selectHabit(habit.id)}
                     active={habit.active || false}
+                    onDelete={e => this.props.deleteHabit(habit.id)}
                   />
                 )
               }
@@ -45,6 +46,7 @@ export default class SettingsPage extends Component {
                     text={habit.text}
                     onSelect={e => this.props.selectHabit(habit.id)}
                     active={habit.active || false}
+                    onDelete={e => this.props.deleteHabit(habit.id)}
                   />
                 )
               }

@@ -42,3 +42,9 @@ export function createHabit(habit) {
     habit
   }
 }
+export function deleteHabit(habit) {
+  return {
+    type: 'DELETE_HABIT',
+    habit
+  }
+}
