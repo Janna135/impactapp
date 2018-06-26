@@ -52,14 +52,16 @@ export default function(state, action) {
       }
 
     case 'DELETE_HABIT':
-      const deletableHabits = state.habits
-      const habitIndexDelete = deletableHabits.findIndex(
+      const habitIndexDelete = state.habits.findIndex(
         habit => habit.id === action.id
       )
 
       return {
         ...state,
-        habits: [...state.habits.slice(0, habitIndexDelete)]
+        habits: [
+          ...state.habits.slice(0, habitIndexDelete),
+          ...state.habits.slice(habitIndexDelete + 1)
+        ]
       }
 
     default:

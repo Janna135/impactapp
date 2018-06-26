@@ -9,5 +9,6 @@ const List = styled('div')`
   align-items: center;
   overflow-x: scroll;
   font-size: 1.2rem;
+  margin-top: 20px;
 `
 export default List

@@ -7,15 +7,22 @@ const StyledButton = styled('div')`
   color: #9fffcb;
   font-family: sans-serif;
   font-weight: bold;
-  height: 50px;
-  width: 100%;
-  margin-right: 5px;
-  margin-left: 5px;
-  margin-bottom: 5px;
+  font-size: 1.3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 20px;
+    display: block;
+    background: linear-gradient(#004e64, transparent);
+    top: 100%;
+  }
 `
 
 const SideButton = styled('div')`

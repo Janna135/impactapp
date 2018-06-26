@@ -7,7 +7,7 @@ const StyledInput = styled('input')`
 const StyledDiv = styled('div')`
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   font-size: 1.3rem;
   background-color: #9fffcb;
   color: #004e64;
@@ -18,19 +18,14 @@ const DeleteButton = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
+  align-self: flex-end;
   background-color: #00a5cf;
   color: #9fffcb;
   width: 20px;
   height: 20px;
   font-family: sans-serif;
-  margin: 5px 5px 5px auto;
+  margin: 5px;
   border-radius: 50%;
-
-  &:after {
-    content: '×';
-    position: relative;
-    top: -1px;
-  }
 `
 
 export default class HabitSettingsItem extends Component {
@@ -40,7 +35,7 @@ export default class HabitSettingsItem extends Component {
       <StyledDiv>
         <StyledInput type="checkbox" onClick={onSelect} checked={active} />
         <label>{text}</label>
-        <DeleteButton onClick={onDelete} />
+        <DeleteButton onClick={onDelete}>x</DeleteButton>
       </StyledDiv>
     )
   }

@@ -45,7 +45,7 @@ export default class OverviewPage extends Component {
         <List>
           <b>Gut</b>
           {Object.keys(statistics).map(uid => {
-            if (this.findHabitCategory(habits, uid) === 'good')
+            if (this.findHabitCategory(habits, uid) === 'good') {
               return (
                 <OverviewHabit
                   count={statistics[uid]}
@@ -53,10 +53,11 @@ export default class OverviewPage extends Component {
                   text={this.findHabitName(habits, uid)}
                 />
               )
+            }
           })}
           <b>Schlecht</b>
           {Object.keys(statistics).map(uid => {
-            if (this.findHabitCategory(habits, uid) === 'bad')
+            if (this.findHabitCategory(habits, uid) === 'bad') {
               return (
                 <OverviewHabit
                   count={statistics[uid]}
@@ -64,6 +65,7 @@ export default class OverviewPage extends Component {
                   text={this.findHabitName(habits, uid)}
                 />
               )
+            }
           })}
         </List>
       </React.Fragment>

@@ -6,6 +6,7 @@ const Headline = styled('span')`
   font-weight: bolder;
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
 `
 
 export default Headline
