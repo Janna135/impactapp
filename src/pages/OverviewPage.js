@@ -6,7 +6,7 @@ import OverviewHabit from '../components/OverviewHabit'
 
 const Wrapper = styled('div')`
   padding: 10px 0;
-  overflow-y: scroll;
+
   font-size: 1.2rem;
 `
 

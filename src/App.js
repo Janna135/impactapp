@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import globalStyles from './styles/global'
 import Grid from './styles/Grid'
-import styled from 'react-emotion'
 
 import TodayPageView from './containers/TodayPageView'
 import SettingsPageView from './containers/SettingsPageView'
