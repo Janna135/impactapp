@@ -2,26 +2,26 @@ import React, { Component } from 'react'
 import styled from 'react-emotion'
 
 const StyledButton = styled('div')`
-  background-color: #004e64;
   border-radius: 5px;
   color: #9fffcb;
   font-family: sans-serif;
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
+  margin-top: 10px;
 
   &:after {
     content: '';
     position: absolute;
     left: 0;
     right: 0;
-    height: 20px;
+    height: 30px;
     display: block;
     background: linear-gradient(#004e64, transparent);
-    top: 100%;
+    top: 115%;
   }
 `
 
