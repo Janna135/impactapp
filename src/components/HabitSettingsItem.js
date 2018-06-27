@@ -11,7 +11,9 @@ const StyledDiv = styled('div')`
   font-size: 1.3rem;
   background-color: #9fffcb;
   color: #004e64;
-  padding-bottom: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 10px;
 `
 
 const DeleteButton = styled('div')`

@@ -8,16 +8,18 @@ import SelectButton from '../components/SelectButton'
 const Button = styled('div')`
   border: 2px solid #9fffcb;
   border-radius: 5px;
-  font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 35px;
   width: 100px;
+  margin: 15px;
 `
 
 const StyledInput = styled('input')`
-  margin: 10px;
+  margin: 20px;
+  height: 30px;
+  width: 200px;
 `
 
 const HabitForm = styled('form')`
@@ -25,7 +27,8 @@ const HabitForm = styled('form')`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  padding: 20px 0 10px;
 `
 
 export default class SettingsFormPage extends Component {

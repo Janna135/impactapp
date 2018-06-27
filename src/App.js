@@ -18,10 +18,6 @@ import initialState from './reducers/initialState'
 
 globalStyles()
 
-const Main = styled('main')`
-  background-color: #004e64;
-`
-
 const store = createStore(
   reducer,
   setupState(),
@@ -65,24 +61,22 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <Grid>
-            <Main>
-              <Route exact path="/" component={TodayPageView} />
-              <Route
-                path="/history/days"
-                render={() => (
-                  <HistoryListPage habits={state.habits} data={state.history} />
-                )}
-              />
-              <Route
-                exact
-                path="/history"
-                render={() => (
-                  <OverviewPage habits={state.habits} data={state.history} />
-                )}
-              />
-              <Route exact path="/settings" component={SettingsPageView} />
-              <Route path="/settings/create" component={SettingsFormPageView} />
-            </Main>
+            <Route exact path="/" component={TodayPageView} />
+            <Route
+              path="/history/days"
+              render={() => (
+                <HistoryListPage habits={state.habits} data={state.history} />
+              )}
+            />
+            <Route
+              exact
+              path="/history"
+              render={() => (
+                <OverviewPage habits={state.habits} data={state.history} />
+              )}
+            />
+            <Route exact path="/settings" component={SettingsPageView} />
+            <Route path="/settings/create" component={SettingsFormPageView} />
             <Navigation />
           </Grid>
         </Router>

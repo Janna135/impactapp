@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
+import styled from 'react-emotion'
 
 import SwitchButtonHistory from '../components/SwitchButtonHistory'
 import OverviewHabit from '../components/OverviewHabit'
 
-import List from '../styles/List'
+const Wrapper = styled('div')`
+  padding: 10px 0;
+  overflow-y: scroll;
+  font-size: 1.2rem;
+`
 
 export default class OverviewPage extends Component {
   aggregateStatistics(data) {
@@ -35,6 +40,59 @@ export default class OverviewPage extends Component {
     return foundHabit.category
   }
 
+  renderList(habits, statistics) {
+    const goodStatistics = Object.keys(statistics).filter(
+      id => this.findHabitCategory(habits, id) === 'good'
+    )
+
+    const badStatistics = Object.keys(statistics).filter(
+      id => this.findHabitCategory(habits, id) === 'bad'
+    )
+
+    const renderGood = () => {
+      return (
+        <React.Fragment>
+          <b>Gut</b>
+          {goodStatistics.map(uid => {
+            return (
+              <OverviewHabit
+                key={uid}
+                count={statistics[uid]}
+                placeholder={'x'}
+                text={this.findHabitName(habits, uid)}
+              />
+            )
+          })}
+        </React.Fragment>
+      )
+    }
+
+    const renderBad = () => {
+      return (
+        <React.Fragment>
+          <b>Schlecht</b>
+          {badStatistics.map(uid => {
+            return (
+              <OverviewHabit
+                key={uid}
+                count={statistics[uid]}
+                placeholder={'x'}
+                text={this.findHabitName(habits, uid)}
+              />
+            )
+          })}
+        </React.Fragment>
+      )
+    }
+
+    return (
+      <Wrapper>
+        {!!goodStatistics.length && renderGood()}
+        {!!badStatistics.length && renderBad()}
+      </Wrapper>
+    )
+  }
+
   render() {
     const { data, habits } = this.props
     const statistics = this.aggregateStatistics(data)
@@ -42,32 +100,7 @@ export default class OverviewPage extends Component {
     return (
       <React.Fragment>
         <SwitchButtonHistory />
-        <List>
-          <b>Gut</b>
-          {Object.keys(statistics).map(uid => {
-            if (this.findHabitCategory(habits, uid) === 'good') {
-              return (
-                <OverviewHabit
-                  count={statistics[uid]}
-                  placeholder={'x'}
-                  text={this.findHabitName(habits, uid)}
-                />
-              )
-            }
-          })}
-          <b>Schlecht</b>
-          {Object.keys(statistics).map(uid => {
-            if (this.findHabitCategory(habits, uid) === 'bad') {
-              return (
-                <OverviewHabit
-                  count={statistics[uid]}
-                  placeholder={'x'}
-                  text={this.findHabitName(habits, uid)}
-                />
-              )
-            }
-          })}
-        </List>
+        {this.renderList(habits, statistics)}
       </React.Fragment>
     )
   }

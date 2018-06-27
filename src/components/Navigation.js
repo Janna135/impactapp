@@ -6,9 +6,7 @@ import { css } from 'emotion'
 const Wrapper = styled('div')`
   display: flex;
   justify-content: center;
-  width: 100%;
-  position: sticky;
-  margin-bottom: 10px;
+  position: relative;
   grid-row: 3;
 
   &:before {
@@ -19,7 +17,7 @@ const Wrapper = styled('div')`
     height: 30px;
     display: block;
     background: linear-gradient(transparent, #004e64);
-    top: -57%;
+    bottom: calc(100% - 0.05px);
   }
 `
 
@@ -60,7 +58,7 @@ export default class Navigation extends Component {
           <svg
             fill={'white'}
             className={svgStyle3}
-            enable-background="new 0 0 64 64"
+            enableBackground="new 0 0 64 64"
             height="64px"
             id="Layer_1"
             version="1.1"
@@ -98,7 +96,7 @@ export default class Navigation extends Component {
           <svg
             fill={'white'}
             className={svgStyle2}
-            enable-background="new 0 0 48 48"
+            enableBackground="new 0 0 48 48"
             height="48px"
             version="1.1"
             viewBox="0 0 48 48"

@@ -8,7 +8,6 @@ const StyledDiv = styled('div')`
   color: #004e64;
   height: auto;
   padding: 5px;
-  width: 100%;
 `
 
 const CountStyle = styled('span')`

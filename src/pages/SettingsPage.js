@@ -1,14 +1,9 @@
 import React, { Component } from 'react'
 
 import styled from 'react-emotion'
-import List from '../styles/List'
 
 import HabitSettingsItem from '../components/HabitSettingsItem'
 import SwitchButtonSettings from '../components/SwitchButtonSettings'
-
-const StyledDiv = styled('div')`
-  grid-row: 2;
-`
 
 const SmallHeadline = styled('h3')`
   color: #7ae582;
@@ -16,44 +11,47 @@ const SmallHeadline = styled('h3')`
   justify-content: center;
 `
 
+const Wrapper = styled('div')`
+  padding: 15px 0;
+  overflow-y: scroll;
+`
+
 export default class SettingsPage extends Component {
   render() {
     const { habits } = this.props
 
     return (
-      <div>
+      <React.Fragment>
         <SwitchButtonSettings />
-        <List>
-          <StyledDiv>
-            <SmallHeadline>Gut</SmallHeadline>
-            {habits.map(habit => {
-              if (habit.category === 'good') {
-                return (
-                  <HabitSettingsItem
-                    text={habit.text}
-                    onSelect={e => this.props.selectHabit(habit.id)}
-                    active={habit.active || false}
-                    onDelete={e => this.props.deleteHabit(habit.id)}
-                  />
-                )
-              }
-            })}
-            <SmallHeadline>Schlecht</SmallHeadline>
-            {habits.map(habit => {
-              if (habit.category === 'bad') {
-                return (
-                  <HabitSettingsItem
-                    text={habit.text}
-                    onSelect={e => this.props.selectHabit(habit.id)}
-                    active={habit.active || false}
-                    onDelete={e => this.props.deleteHabit(habit.id)}
-                  />
-                )
-              }
-            })}
-          </StyledDiv>
-        </List>
-      </div>
+        <Wrapper>
+          <SmallHeadline>Gut</SmallHeadline>
+          {habits.map(habit => {
+            if (habit.category === 'good') {
+              return (
+                <HabitSettingsItem
+                  text={habit.text}
+                  onSelect={e => this.props.selectHabit(habit.id)}
+                  active={habit.active || false}
+                  onDelete={e => this.props.deleteHabit(habit.id)}
+                />
+              )
+            }
+          })}
+          <SmallHeadline>Schlecht</SmallHeadline>
+          {habits.map(habit => {
+            if (habit.category === 'bad') {
+              return (
+                <HabitSettingsItem
+                  text={habit.text}
+                  onSelect={e => this.props.selectHabit(habit.id)}
+                  active={habit.active || false}
+                  onDelete={e => this.props.deleteHabit(habit.id)}
+                />
+              )
+            }
+          })}
+        </Wrapper>
+      </React.Fragment>
     )
   }
 }

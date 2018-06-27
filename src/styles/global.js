@@ -14,5 +14,6 @@ export default function globalStyles() {
     background-color: #004E64;
     color: #9FFFCB;
     overflow: hidden;
+    margin: 0;
   }`
 }

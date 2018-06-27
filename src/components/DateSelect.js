@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled from 'react-emotion'
 
 const StyledButton = styled('div')`
+  grid-row: 1;
   border-radius: 5px;
   color: #9fffcb;
   font-family: sans-serif;
@@ -10,18 +11,17 @@ const StyledButton = styled('div')`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  margin-top: 10px;
+  position: relative;
 
   &:after {
     content: '';
     position: absolute;
     left: 0;
     right: 0;
-    height: 30px;
+    height: 20px;
     display: block;
     background: linear-gradient(#004e64, transparent);
-    top: 115%;
+    top: calc(100% - 1px);
   }
 `
 

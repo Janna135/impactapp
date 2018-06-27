@@ -16,6 +16,7 @@ export default class HistoryList extends Component {
             const dateHistory = history[date]
             return (
               <SavedHabits
+                key={date}
                 date={date}
                 goodHabits={Object.keys(dateHistory).map(uid => {
                   const foundHabit = habits.find(habit => habit.id === uid)
