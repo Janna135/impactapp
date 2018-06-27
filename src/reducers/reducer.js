@@ -30,6 +30,21 @@ export default function(state, action) {
         ...state,
         dayOffset: state.dayOffset === 0 ? 0 : state.dayOffset + 1
       }
+
+    case 'SELECT_HABIT':
+      const habits = state.habits
+      const habitIndex = habits.findIndex(habit => habit.id === action.id)
+      const habit = habits[habitIndex]
+
+      return {
+        ...state,
+        habits: [
+          ...state.habits.slice(0, habitIndex),
+          { ...habit, active: !habit.active },
+          ...state.habits.slice(habitIndex + 1)
+        ]
+      }
+
     default:
       return state
   }

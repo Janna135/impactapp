@@ -21,6 +21,9 @@ export default class Navigation extends Component {
         <StyledNavLink to="/history" activeStyle={{ background: '#7AE582' }}>
           Entwicklung
         </StyledNavLink>
+        <StyledNavLink to="/settings" activeStyle={{ background: '#7AE582' }}>
+          Einstellungen
+        </StyledNavLink>
       </Wrapper>
     )
   }

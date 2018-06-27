@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import SwitchButton from '../components/SwitchButton'
+import SwitchButtonHistory from '../components/SwitchButtonHistory'
 import OverviewHabit from '../components/OverviewHabit'
 
 import List from '../styles/List'
@@ -36,12 +36,12 @@ export default class OverviewPage extends Component {
   }
 
   render() {
-    const { data, habits, uid } = this.props
+    const { data, habits } = this.props
     const statistics = this.aggregateStatistics(data)
 
     return (
       <React.Fragment>
-        <SwitchButton />
+        <SwitchButtonHistory />
         <List>
           <b>Gut</b>
           {Object.keys(statistics).map(uid => {

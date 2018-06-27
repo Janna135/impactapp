@@ -5,7 +5,8 @@ import { action } from '@storybook/addon-actions'
 import ToggleButton from '../src/components/ToggleButton'
 import CountButton from '../src/components/CountButton'
 import DateSelect from '../src/components/DateSelect'
-import SwitchButton from '../src/components/SwitchButton'
+import HabitSettingsItem from '../src/components/HabitSettingsItem'
+import SwitchButtonHistory from '../src/components/SwitchButtonHistory'
 import Navigation from '../src/components/Navigation'
 import OverviewHabit from '../src/components/OverviewHabit'
 import SavedHabits from '../src/components/SavedHabits'
@@ -16,6 +17,10 @@ storiesOf('CountButton', module).add('default', () => (
 
 storiesOf('DateSelect', module).add('default', () => (
   <DateSelect date="22.02.2018" onClick={'click'} />
+))
+
+storiesOf('HabitSettingsItem', module).add('default', () => (
+  <HabitSettingsItem text={'Lebensmittel weggeschmissen'} />
 ))
 
 storiesOf('Navigation', module)
@@ -34,9 +39,9 @@ storiesOf('OverviewHabit', module).add('default', () => (
   <OverviewHabit count={'3'} text={'Müll trennen'} />
 ))
 
-storiesOf('SwitchButton, module')
+storiesOf('SwitchButtonHistory, module')
   .add('left selected', () => (
-    <SwitchButton
+    <SwitchButtonHistory
       selected={0}
       onClick={action('click')}
       textLeft={'All'}
@@ -44,7 +49,7 @@ storiesOf('SwitchButton, module')
     />
   ))
   .add('right selected', () => (
-    <SwitchButton
+    <SwitchButtonHistory
       selected={1}
       onClick={action('click')}
       textLeft={'All'}

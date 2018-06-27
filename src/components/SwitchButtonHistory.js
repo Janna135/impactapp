@@ -12,7 +12,7 @@ const Wrapper = styled('div')`
   grid-row: 1;
 `
 
-export default class SwitchButton extends Component {
+export default class SwitchButtonHistory extends Component {
   render() {
     return (
       <Wrapper>

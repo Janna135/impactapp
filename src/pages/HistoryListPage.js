@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import SavedHabits from '../components/SavedHabits'
-import SwitchButton from '../components/SwitchButton'
+import SwitchButtonHistory from '../components/SwitchButtonHistory'
 
 import List from '../styles/List'
 
@@ -10,7 +10,7 @@ export default class HistoryList extends Component {
     const { data: history, habits } = this.props
     return (
       <div>
-        <SwitchButton />
+        <SwitchButtonHistory />
         <List>
           {Object.keys(history).map(date => {
             const dateHistory = history[date]

@@ -6,13 +6,14 @@ import Grid from './styles/Grid'
 import styled from 'react-emotion'
 
 import TodayPageView from './containers/TodayPageView'
+import SettingsPageView from './containers/SettingsPageView'
 import HistoryPage from './pages/HistoryPage'
 import Navigation from './components/Navigation'
 import HistoryListPage from './pages/HistoryListPage'
 import OverviewPage from './pages/OverviewPage'
 
 import { createStore } from 'redux'
-import reducer, { getCurrentDate } from './reducers/reducer'
+import reducer from './reducers/reducer'
 import initialState from './reducers/initialState'
 
 globalStyles()
@@ -60,9 +61,6 @@ class App extends Component {
   render() {
     const state = store.getState()
 
-    const dispatch = actionCreator => payload =>
-      store.dispatch(actionCreator(payload))
-
     return (
       <Provider store={store}>
         <Router>
@@ -88,6 +86,7 @@ class App extends Component {
                   <OverviewPage habits={state.habits} data={state.history} />
                 )}
               />
+              <Route exact path="/settings" component={SettingsPageView} />
             </Main>
             <Navigation />
           </Grid>
