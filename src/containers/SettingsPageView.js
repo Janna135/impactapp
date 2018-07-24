@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import SettingsPage from '../pages/SettingsPage'
 
-import { selectHabit } from '../actions/actions'
+import { selectHabit, deleteHabit } from '../actions/actions'
 
 const mapPropsToState = state => ({
   habits: state.habits,
@@ -9,7 +9,8 @@ const mapPropsToState = state => ({
 })
 
 const mapPropsToDispatch = dispatch => ({
-  selectHabit: id => dispatch(selectHabit(id))
+  selectHabit: id => dispatch(selectHabit(id)),
+  deleteHabit: id => dispatch(deleteHabit(id))
 })
 
 export default connect(

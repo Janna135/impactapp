@@ -10,6 +10,7 @@ import SwitchButtonHistory from '../src/components/SwitchButtonHistory'
 import Navigation from '../src/components/Navigation'
 import OverviewHabit from '../src/components/OverviewHabit'
 import SavedHabits from '../src/components/SavedHabits'
+import SelectButton from '../src/components/SelectButton'
 
 storiesOf('CountButton', module).add('default', () => (
   <CountButton text={'km Rad gefahren'} count={'3'} onCLick={'click'} />
@@ -37,6 +38,10 @@ storiesOf('SavedHabits', module).add('default', () => (
 
 storiesOf('OverviewHabit', module).add('default', () => (
   <OverviewHabit count={'3'} text={'Müll trennen'} />
+))
+
+storiesOf('SelectButton', module).add('default', () => (
+  <SelectButton text1={'toggle'} text2={'count'} />
 ))
 
 storiesOf('SwitchButtonHistory, module')

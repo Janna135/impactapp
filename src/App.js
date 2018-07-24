@@ -3,24 +3,19 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import globalStyles from './styles/global'
 import Grid from './styles/Grid'
-import styled from 'react-emotion'
 
 import TodayPageView from './containers/TodayPageView'
 import SettingsPageView from './containers/SettingsPageView'
-import HistoryPage from './pages/HistoryPage'
 import Navigation from './components/Navigation'
 import HistoryListPage from './pages/HistoryListPage'
 import OverviewPage from './pages/OverviewPage'
+import SettingsFormPageView from './containers/SettingsFormPageView'
 
 import { createStore } from 'redux'
 import reducer from './reducers/reducer'
 import initialState from './reducers/initialState'
 
 globalStyles()
-
-const Main = styled('main')`
-  background-color: #004e64;
-`
 
 const store = createStore(
   reducer,
@@ -65,29 +60,22 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <Grid>
-            <Main>
-              <Route exact path="/" component={TodayPageView} />
-              <Route
-                exact
-                path="/history"
-                render={() => (
-                  <HistoryPage habits={state.habits} data={state.history} />
-                )}
-              />
-              <Route
-                path="/history/days"
-                render={() => (
-                  <HistoryListPage habits={state.habits} data={state.history} />
-                )}
-              />
-              <Route
-                path="/history/overview"
-                render={() => (
-                  <OverviewPage habits={state.habits} data={state.history} />
-                )}
-              />
-              <Route exact path="/settings" component={SettingsPageView} />
-            </Main>
+            <Route exact path="/" component={TodayPageView} />
+            <Route
+              path="/history/days"
+              render={() => (
+                <HistoryListPage habits={state.habits} data={state.history} />
+              )}
+            />
+            <Route
+              exact
+              path="/history"
+              render={() => (
+                <OverviewPage habits={state.habits} data={state.history} />
+              )}
+            />
+            <Route exact path="/settings" component={SettingsPageView} />
+            <Route path="/settings/create" component={SettingsFormPageView} />
             <Navigation />
           </Grid>
         </Router>

@@ -2,20 +2,27 @@ import React, { Component } from 'react'
 import styled from 'react-emotion'
 
 const StyledButton = styled('div')`
-  background-color: #004e64;
+  grid-row: 1;
   border-radius: 5px;
   color: #9fffcb;
   font-family: sans-serif;
   font-weight: bold;
-  height: 50px;
-  width: 100%;
-  margin-right: 5px;
-  margin-left: 5px;
-  margin-bottom: 5px;
+  font-size: 1.2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 20px;
+    display: block;
+    background: linear-gradient(#004e64, transparent);
+    top: calc(100% - 1px);
+  }
 `
 
 const SideButton = styled('div')`

@@ -5,10 +5,15 @@ export default function globalStyles() {
   * {
     box-sizing: border-box;
   }
+
+  html, body {
+    height: 100%
+  }
+
   body {
     background-color: #004E64;
     color: #9FFFCB;
-    height: 100vh;
     overflow: hidden;
+    margin: 0;
   }`
 }

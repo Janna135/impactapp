@@ -9,7 +9,18 @@ const Wrapper = styled('div')`
   align-items: center;
   margin-bottom: 5px;
   width: 100%;
-  grid-row: 1;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 20px;
+    display: block;
+    background: linear-gradient(#004e64, transparent);
+    top: calc(100% + 2.5px);
+  }
 `
 
 export default class SwitchButtonHistory extends Component {
@@ -17,7 +28,8 @@ export default class SwitchButtonHistory extends Component {
     return (
       <Wrapper>
         <StyledSmallNavLink
-          to="/history/overview"
+          exact
+          to="/history"
           activeStyle={{ background: '#7AE582' }}
         >
           Übersicht

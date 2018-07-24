@@ -36,3 +36,15 @@ export function selectHabit(id) {
     id
   }
 }
+export function createHabit(habit) {
+  return {
+    type: 'CREATE_HABIT',
+    habit
+  }
+}
+export function deleteHabit(id) {
+  return {
+    type: 'DELETE_HABIT',
+    id
+  }
+}

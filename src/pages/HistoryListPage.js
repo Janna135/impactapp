@@ -9,13 +9,14 @@ export default class HistoryList extends Component {
   render() {
     const { data: history, habits } = this.props
     return (
-      <div>
+      <React.Fragment>
         <SwitchButtonHistory />
         <List>
           {Object.keys(history).map(date => {
             const dateHistory = history[date]
             return (
               <SavedHabits
+                key={date}
                 date={date}
                 goodHabits={Object.keys(dateHistory).map(uid => {
                   const foundHabit = habits.find(habit => habit.id === uid)
@@ -45,7 +46,7 @@ export default class HistoryList extends Component {
             )
           })}
         </List>
-      </div>
+      </React.Fragment>
     )
   }
 }

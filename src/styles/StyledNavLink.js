@@ -12,6 +12,7 @@ export default styled(NavLink)`
   align-items: center;
   text-decoration: none;
   color: #00a5cf;
+  padding: 5px;
 
   :first-child{
     border-radius 5px 0 0 5px;

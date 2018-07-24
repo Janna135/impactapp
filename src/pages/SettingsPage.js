@@ -1,21 +1,9 @@
 import React, { Component } from 'react'
 
 import styled from 'react-emotion'
-import List from '../styles/List'
-
-import habits from '../data/habits'
 
 import HabitSettingsItem from '../components/HabitSettingsItem'
-
-const StyledDiv = styled('div')`
-  grid-row: 2;
-`
-const StyledHeadline = styled('h2')`
-  grid-row: 1;
-  color: #7ae582;
-  display: flex;
-  justify-content: center;
-`
+import SwitchButtonSettings from '../components/SwitchButtonSettings'
 
 const SmallHeadline = styled('h3')`
   color: #7ae582;
@@ -23,14 +11,19 @@ const SmallHeadline = styled('h3')`
   justify-content: center;
 `
 
+const Wrapper = styled('div')`
+  padding: 15px 0;
+  overflow-y: scroll;
+`
+
 export default class SettingsPage extends Component {
   render() {
     const { habits } = this.props
 
     return (
-      <List>
-        <StyledHeadline>Auswahl</StyledHeadline>
-        <StyledDiv>
+      <React.Fragment>
+        <SwitchButtonSettings />
+        <Wrapper>
           <SmallHeadline>Gut</SmallHeadline>
           {habits.map(habit => {
             if (habit.category === 'good') {
@@ -39,6 +32,7 @@ export default class SettingsPage extends Component {
                   text={habit.text}
                   onSelect={e => this.props.selectHabit(habit.id)}
                   active={habit.active || false}
+                  onDelete={e => this.props.deleteHabit(habit.id)}
                 />
               )
             }
@@ -51,12 +45,13 @@ export default class SettingsPage extends Component {
                   text={habit.text}
                   onSelect={e => this.props.selectHabit(habit.id)}
                   active={habit.active || false}
+                  onDelete={e => this.props.deleteHabit(habit.id)}
                 />
               )
             }
           })}
-        </StyledDiv>
-      </List>
+        </Wrapper>
+      </React.Fragment>
     )
   }
 }
